@@ -1,9 +1,11 @@
+// Mole Object
+
 function Mole() {
   this.createHtmlElement();
   this._clicked = false;
 }
 
-// Setters :
+// Create Html and set img
 Mole.prototype.createHtmlElement = function() {
  this._htmlElement = $('<img>');
  this._htmlElement.attr('src', 'img/Mole-traps.jpg');

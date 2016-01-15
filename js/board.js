@@ -4,19 +4,21 @@ function Board(nb) {
   this.createHoles(nb);
 }
 
+// Create empty holes on the board
 Board.prototype.createHoles = function(nb){
   for (var i = 0; i < nb; i++) {
     hole = new Hole(this);
     hole.removeMole();
     this._holes.push(hole);
   }
-  console.log(this._holes);
 };
 
+// Try to set a new mole every second
 Board.prototype.tick = function(){
   setInterval(this.randomizeMoles.bind(this),1000);
 };
 
+// Check board and return tab of empty holes
 Board.prototype.getEmptyHoles = function(){
   var emptyHoles = [];
   this._holes.forEach(function(hole){
@@ -28,6 +30,7 @@ Board.prototype.getEmptyHoles = function(){
   return emptyHoles;
 };
 
+// Pick a random Hole and add a Mole
 Board.prototype.randomizeMoles = function(){
 
   var emptyHoles = this.getEmptyHoles();
@@ -36,11 +39,7 @@ Board.prototype.randomizeMoles = function(){
   emptyHoles[nb].addMole();
 };
 
-
-Board.prototype.getHole = function(nb){
-  return this._holes[nb];
-};
-
+// Return HtmlElement of instance
 Board.prototype.getHtmlElement = function(){
   return this._htmlElement;
 };
